@@ -11,7 +11,7 @@
 --headerFont:#fff;
   /* 反差色 */
 --fontColor:#00283A;
---mainColor:#ff8181;
+--mainColor:#007bff;
 --bagColor:#02162b;
 }
 
@@ -480,7 +480,7 @@ img {
  
   color: var(--headerFont);
   border-radius: 50px;
-  background: linear-gradient(-45deg, var(--mainColor) 50%, #fff 60%, var(--mainColor) 70%);
+  background: linear-gradient(-45deg, #ffe96b 50%, #fff 60%, #4ecdc4 70%);
   background-size: 600% 100%;
   animation: shine 5s infinite;
 }

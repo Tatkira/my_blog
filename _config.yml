@@ -102,4 +102,6 @@ theme: my-landscape
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
+  type: git
+  repo: https://github.com/Tatkira/my_blog.git
+  branch: gh-pages
