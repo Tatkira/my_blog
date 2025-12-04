@@ -8,9 +8,9 @@ subtitle: ''         # 网站副标题
 description: ''      # 网站描述
 keywords:
 author: DAONE     # 作者名称
-language: en         # 语言设置
+language: zh-CN         # 语言设置
 # Set the language to 'zh-CN' for Chinese, 'en' for English,
-timezone: ''      # 时区设置
+timezone: Asia/Shanghai      # 时区设置
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
@@ -97,7 +97,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: my-landscape
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
