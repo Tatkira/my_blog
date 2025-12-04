@@ -3,8 +3,8 @@
 # ===============
 # Navigation menu
 menu:
-  Home: /portfolio
-  Blog: /
+  Home: /
+  Archives: /archives
 # RSS link
 rss: /atom.xml
 # Path of title banner image of page top

@@ -208,6 +208,10 @@ img {
   display: inline-block;
 }
 
+.header-nav>li.active {
+  color: #0059ff;
+}
+
 .header-nav>li.active::after {
   content: '';
   display: inline-block;
@@ -217,7 +221,7 @@ img {
   right: 0px;
   border-radius: 10px;
   height: 3px;
-  background-color: var(--mainColor);
+  background-color: #0059ff;
   transition: .4s ease-in-out;
 }
 
@@ -229,7 +233,7 @@ img {
 }
 
 .header-nav>li:hover {
-  color: var(--mainColor);
+  color: #0059ff;
 }
 
 
