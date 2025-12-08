@@ -11,7 +11,7 @@
 --headerFont:#fff;
   /* 反差色 */
 --fontColor:#00283A;
---mainColor:#007bff;
+--mainColor:#0059ff;
 --bagColor:#02162b;
 }
 
@@ -209,7 +209,7 @@ img {
 }
 
 .header-nav>li.active {
-  color: #0059ff;
+  color: #0059ff !important;
 }
 
 .header-nav>li.active::after {
@@ -221,7 +221,7 @@ img {
   right: 0px;
   border-radius: 10px;
   height: 3px;
-  background-color: #0059ff;
+  background-color: #0059ff !important;
   transition: .4s ease-in-out;
 }
 
@@ -233,7 +233,12 @@ img {
 }
 
 .header-nav>li:hover {
-  color: #0059ff;
+  color: #0059ff !important;
+}
+
+/* 针对顶部栏所有链接的悬停颜色强制覆盖 */
+.header a:hover {
+  color: #0059ff !important;
 }
 
 
