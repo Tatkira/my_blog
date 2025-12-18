@@ -4,6 +4,7 @@
 # Navigation menu
 menu:
   Home: /
+  Portfolio: /portfolio
   Archives: /archives
 # RSS link
 rss: /atom.xml
@@ -41,14 +42,17 @@ copyright:
 # Sidebar
 # ===============
 # Sidebar style. You can choose `left`, `right`, `bottom` or `false`.
-sidebar: left
+sidebar: right
 # Widgets displaying in sidebar
 widgets:
+- profile
 - category
 - tag
-- tagcloud
-- archive
 - recent_posts
+- archive
+
+# Avatar path
+avatar: /images/avatar.jpg
 
 # ===============
 # Widget behavior

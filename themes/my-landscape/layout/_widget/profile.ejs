@@ -1,0 +1,22 @@
+<% if (site.posts.length){ %>
+<div class="widget-wrap sea-profile">
+  <div class="widget">
+    <div class="sea-profile-avatar">
+      <img src="<%- theme.avatar || '/images/avatar.jpg' %>" alt="<%= config.author %>">
+    </div>
+    <h3 class="sea-profile-name"><%= config.author %></h3>
+    <% if (config.description || config.subtitle){ %>
+      <p class="sea-profile-intro"><%= config.description || config.subtitle %></p>
+    <% } %>
+    <div class="sea-profile-links">
+      <% if (theme.links){ %>
+        <% for (var i in theme.links){ %>
+          <a class="sea-profile-link-item" href="<%- theme.links[i] %>" target="_blank" title="<%= i %>">
+            <%= i %>
+          </a>
+        <% } %>
+      <% } %>
+    </div>
+  </div>
+</div>
+<% } %>

@@ -491,7 +491,7 @@ img {
   border-radius: 50px;
   background: linear-gradient(-45deg, #ffe96b 50%, #fff 60%, #4ecdc4 70%);
   background-size: 600% 100%;
-  animation: shine 5s infinite;
+  animation:  shine 5s infinite;
 }
 @keyframes shine {
   0% {
@@ -501,7 +501,7 @@ img {
     background-position-x: 0%;
   }
   100% {
-    background-position-x: -100%;
+    background-position-x: -140%; /* 结束位置给大一些过渡好接上 */
   }
 }
 

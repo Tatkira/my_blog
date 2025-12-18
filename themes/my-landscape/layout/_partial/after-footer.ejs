@@ -44,3 +44,12 @@
     });
 </script>
 <% } %>
+<%- js('js/search.js') %>
+<script>
+  var search_path = '<%= config.search ? config.search.path : 'search.xml' %>';
+  if (search_path.length == 0) {
+    search_path = 'search.xml';
+  }
+  var path = '<%= config.root %>' + search_path;
+  searchFunc(path, 'local-search-input', 'local-search-result');
+</script>

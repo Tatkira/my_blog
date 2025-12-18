@@ -1,0 +1,57 @@
+<section class="sea-post-list">
+  <% page.posts.each(function(post){ %>
+    <div class="sea-post-item">
+      <h2 class="sea-post-title">
+        <a class="sea-post-link" href="<%- url_for(post.path) %>">
+          <%= post.title || '(no title)' %>
+          <% if (post.sticky){ %>
+            <span class="sea-post-top-flag">「置顶」</span>
+          <% } %>
+        </a>
+      </h2>
+      <div class="sea-post-line"></div>
+      <div class="sea-post-abstract">
+        <% if (post.excerpt){ %>
+          <%- post.excerpt %>
+        <% } else { %>
+          <%- truncate(strip_html(post.content), {length: 300, separator: ' '}) %>
+        <% } %>
+      </div>
+      <div class="sea-post-meta">
+        <span class="sea-post-time">
+          <i class="fa fa-calendar"></i>
+          <%- date(post.date, 'YYYY-MM-DD') %>
+        </span>
+        <% if (post.categories && post.categories.length){ %>
+          <span class="sea-post-categories">
+            <i class="fa fa-folder"></i>
+            <%- list_categories(post.categories, {
+              show_count: false,
+              style: 'none',
+              separator: ', '
+            }) %>
+          </span>
+        <% } %>
+        <% if (post.tags && post.tags.length){ %>
+          <span class="sea-post-tags">
+            <i class="fa fa-tag"></i>
+            <%- list_tags(post.tags, {
+              show_count: false,
+              style: 'none',
+              separator: ', '
+            }) %>
+          </span>
+        <% } %>
+      </div>
+    </div>
+  <% }) %>
+</section>
+
+<% if (page.total > 1){ %>
+  <nav id="page-nav">
+    <%- paginator({
+      prev_text: "&laquo; " + __('prev'),
+      next_text: __('next') + " &raquo;"
+    }) %>
+  </nav>
+<% } %>

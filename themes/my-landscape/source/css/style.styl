@@ -19,6 +19,7 @@ body
   background: color-background
   font: font-size font-sans
   -webkit-text-size-adjust: 100%
+  overflow-x: hidden
 
 .outer
   clearfix()
@@ -52,9 +53,28 @@ body
   left: 0
   transition: 0.2s ease-out
   z-index: 1
-  background: color-background
+  background: transparent
   .mobile-nav-on &
     left: mobile-nav-width
+
+.outer
+  clearfix()
+  max-width: (column-width + gutter-width) * columns + gutter-width
+  margin: 0 auto
+  padding: 0 gutter-width
+
+#footer
+  background: color-footer-background
+  padding: 50px 0
+  border-top: 1px solid color-border
+  color: color-grey
+  a
+    color: color-link
+    text-decoration: none
+    &:hover
+      text-decoration: underline
+  position: relative
+  z-index: 2
 
 if sidebar and sidebar isnt bottom
   #main
@@ -81,3 +101,50 @@ if sidebar
 #footer-info span
   color: #227affff
   font-weight: bold  
+
+@import "sea-style"
+
+#local-search-result
+  position: absolute
+  top: 100%
+  right: 0
+  width: 300px
+  background: #fff
+  border: 1px solid #ddd
+  max-height: 400px
+  overflow-y: auto
+  z-index: 999
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2)
+  display: none
+  &:not(:empty)
+    display: block
+
+.search-result-list
+  list-style: none
+  padding: 0
+  margin: 0
+  li
+    padding: 10px
+    border-bottom: 1px solid #eee
+    &:last-child
+      border-bottom: none
+
+.search-result-title
+  font-weight: bold
+  color: #333
+  text-decoration: none
+  display: block
+  margin-bottom: 5px
+  &:hover
+    color: #007bff
+
+.search-result
+  font-size: 0.9em
+  color: #666
+  margin: 0
+  line-height: 1.4
+
+.search-keyword
+  color: #d9534f
+  font-weight: bold
+  font-style: normal

@@ -1,14 +1,42 @@
-<header id="header">
+<header id="header" <% if (is_home()) { %>class="full-page"<% } else if (is_post()) { %>class="post-header"<% } %>>
   <div id="banner"></div>
+  <script>
+    // Bing Random Background
+    (function() {
+      var banner = document.getElementById('banner');
+      var bingUrl = 'https://bing.biturl.top/?resolution=1920&format=image&index=random&mkt=zh-CN';
+      banner.style.backgroundImage = 'url(' + bingUrl + '&v=' + new Date().getTime() + ')';
+    })();
+  </script>
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="<%- url_for() %>" id="logo"><%= config.title %></a>
-      </h1>
-      <% if (theme.subtitle || config.subtitle){ %>
-        <h2 id="subtitle-wrap">
-          <a href="<%- url_for() %>" id="subtitle"><%= theme.subtitle || config.subtitle %></a>
-        </h2>
+      <% if (is_post()) { %>
+        <h1 id="logo-wrap">
+          <span id="logo"><%= page.title %></span>
+        </h1>
+        <div id="subtitle-wrap" style="margin-top: 10px; color: #fff;">
+          <span><i class="fa fa-calendar"></i> <%= date(page.date, 'YYYY-MM-DD') %></span>
+          <% if (page.tags && page.tags.length){ %>
+            <span style="margin-left: 15px;">
+              <i class="fa fa-tags"></i>
+              <%- list_tags(page.tags, {
+                show_count: false,
+                class: 'article-header-tag',
+                style: 'none',
+                separator: ' '
+              }) %>
+            </span>
+          <% } %>
+        </div>
+      <% } else { %>
+        <h1 id="logo-wrap">
+          <a href="<%- url_for() %>" id="logo"><%= config.title %></a>
+        </h1>
+        <% if (theme.subtitle || config.subtitle){ %>
+          <h2 id="subtitle-wrap">
+            <a href="<%- url_for() %>" id="subtitle"><%= theme.subtitle || config.subtitle %></a>
+          </h2>
+        <% } %>
       <% } %>
     </div>
     <div id="header-inner" class="inner">
@@ -24,14 +52,33 @@
             <a class="nav-icon" href="<%- url_for(theme.links[i]) %>"><span class="fa fa-<%= i %>"></span></a>
           <% } %>
         <% } %>
-        <% if (theme.rss){ %>
+        <!-- RSS feed temporarily hidden 没想出这个部件的功能，就先暂时藏起来了 -->
+        <!-- <% if (theme.rss){ %>
           <a class="nav-icon" href="<%- url_for(theme.rss) %>" title="<%= __('rss_feed') %>"><span class="fa fa-rss"></span></a>
-        <% } %>
+        <% } %> -->
         <a class="nav-icon nav-search-btn" title="<%= __('search') %>"><span class="fa fa-search"></span></a>
       </nav>
       <div id="search-form-wrap">
-        <%- search_form({button: '&#xF002;', text: __('search')}) %>
+        <form class="search-form" onsubmit="return false;">
+            <input type="text" id="local-search-input" class="search-form-input" placeholder="Search...">
+            <button type="submit" class="search-form-submit">&#xF002;</button>
+        </form>
+        <div id="local-search-result" class="local-search-result-cls"></div>
       </div>
     </div>
   </div>
+  <% if (is_home()) { %>
+  <div id="scroll-down">
+    <span class="fa fa-chevron-down scroll-down-effects"></span>
+  </div>
+  <script>
+    document.getElementById('scroll-down').addEventListener('click', function() {
+      var headerHeight = document.getElementById('header').offsetHeight;
+      window.scrollTo({
+        top: headerHeight,
+        behavior: 'smooth'
+      });
+    });
+  </script>
+  <% } %>
 </header>
