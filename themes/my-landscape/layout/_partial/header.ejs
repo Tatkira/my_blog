@@ -3,9 +3,38 @@
   <script>
     // Bing Random Background
     (function() {
-      var banner = document.getElementById('banner');
       var bingUrl = 'https://bing.biturl.top/?resolution=1920&format=image&index=random&mkt=zh-CN';
-      banner.style.backgroundImage = 'url(' + bingUrl + '&v=' + new Date().getTime() + ')';
+      var img = new Image();
+      img.src = bingUrl;
+      
+      img.onload = function() {
+        var header = document.getElementById('header');
+        var banner = document.getElementById('banner');
+        
+        // 创建一个新的 div 用于显示 Bing 壁纸，实现叠加淡入效果
+        var newBanner = document.createElement('div');
+        newBanner.style.position = 'absolute';
+        newBanner.style.top = '0';
+        newBanner.style.left = '0';
+        newBanner.style.width = '100%';
+        newBanner.style.height = '100%';
+        newBanner.style.background = 'url(' + bingUrl + ') center #000';
+        newBanner.style.backgroundAttachment = 'fixed';
+        newBanner.style.backgroundSize = 'cover';
+        newBanner.style.zIndex = '-1'; // 保持在底层
+        newBanner.style.opacity = '0'; // 初始透明
+        newBanner.style.transition = 'opacity 1s ease-in-out'; // 设置过渡动画
+        
+        // 将新 banner 插入到旧 banner 后面（DOM 顺序靠后即显示在上方）
+        if (banner && banner.parentNode) {
+           banner.parentNode.insertBefore(newBanner, banner.nextSibling);
+        }
+        
+        // 触发重绘后改变透明度，启动淡入
+        setTimeout(function() {
+          newBanner.style.opacity = '1';
+        }, 50);
+      };
     })();
   </script>
   <div id="header-outer" class="outer">

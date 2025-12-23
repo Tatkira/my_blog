@@ -16,13 +16,14 @@ categories: 技术日记
 摆在我面前的有两条路：
 > 1. 大改架构：手写一套 Teacher-Student 蒸馏框架，训练一个有特权的老师教导一个只有本体感知的学生。但这对于旧版本的代码库侵入性太强，工程量巨大。
 > 2. 巧用数据：保持 PPO 算法不变，通过非对称 Actor-Critic（Asymmetric Actor-Critic） 设计来解题。
+
 我选择了第二条路：最简单、最直接、且最有效。
 
 ## 核心设计
 非对称设计的核心逻辑在于：Actor（Policy）必须是现实的，而 Critic（Value）可以是全知的。
 在 PPO 算法中，Actor 负责输出动作，Critic 负责评估状态价值（Value）。训练结束后，只有 Actor 会被部署到真机上，Critic 随即功成身退。
 因此，我重构了观测逻辑，将观测空间强行拆解：
-- Actor (Policy)：只能看到**本体感知（Proprioception）**信息。包括关节位置、关节速度、IMU 角速度、上一帧动作以及时钟相位。这些数据在真机上非常可靠，噪声极小。
+- Actor (Policy)：只能看到**本体感知（Proprioception）**信息。包括关节位置、关节速度以及IMU 角速度。这些数据在真机上非常可靠，噪声较小。
 - Critic (Value)：除了 Actor 看到的信息外，还能看到特权观测（Privileged Observations）。包括仿真器提供的绝对线速度真值、脚下的地形采样高度图。
 
 ## 代码实现
