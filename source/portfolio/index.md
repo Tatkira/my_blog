@@ -169,11 +169,11 @@ title: Portfolio
     <div class="co-right" id="next-one">
       <div class="content-li li1">
         <div class="li1-box">
-          <a class="li1-box-item carbox" href="您的项目链接">
+          <a class="li1-box-item carbox" href="项目链接">
             <img src="/images/resume/project/rl.jpg" alt="">
             <div class="boxitem-title">
-              <h6>四足机器人强化学习框架</h6>
-              <span>采用非对称AC框架</span>
+              <h6>Locomotion</h6>
+              <span>Learning a general and extensible agile locomoion policy using true value regression module and RL</span>
             </div>
           </a>
           <a class="li1-box-item carbox" target="_blank" rel="noopener" href="https://gitee.com/wttAndroid/vuechat">

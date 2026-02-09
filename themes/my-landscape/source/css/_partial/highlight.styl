@@ -161,3 +161,34 @@ pre
   .keyword
   .javascript .function
     color: highlight-purple
+
+// 禁止选中行号（gutter / line-numbers），并防止在复制时带上行号
+.article-entry
+  .highlight
+    .gutter
+      -webkit-user-select: none
+      -moz-user-select: none
+      -ms-user-select: none
+      user-select: none
+      pointer-events: none
+    pre
+      .line-numbers
+        -webkit-user-select: none
+        -moz-user-select: none
+        -ms-user-select: none
+        user-select: none
+        pointer-events: none
+    .line-numbers
+      -webkit-user-select: none
+      -moz-user-select: none
+      -ms-user-select: none
+      user-select: none
+      pointer-events: none
+
+  pre
+    .gutter
+      -webkit-user-select: none
+      -moz-user-select: none
+      -ms-user-select: none
+      user-select: none
+      pointer-events: none

@@ -112,3 +112,22 @@ search:
   field: post
   content: true
   format: html
+
+# KaTeX (server-side rendering via hexo-katex)
+# This config is not used by hexo-renderer-markdown-it, but kept for reference
+# katex:
+#   enable: true
+#   autoRender: true
+
+# Markdown-it config
+markdown:
+  plugins:
+    - "@iktakahiro/markdown-it-katex"
+  delimiters:
+    - left: "$$"
+      right: "$$"
+      display: true
+    - left: "$"
+      right: "$"
+      display: false
+  ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code"]

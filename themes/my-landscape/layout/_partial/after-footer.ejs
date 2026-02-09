@@ -44,7 +44,9 @@
     });
 </script>
 <% } %>
+<%- js('js/nocopy') %>
 <%- js('js/search.js') %>
+<%- js('js/post-views') %>
 <script>
   var search_path = '<%= config.search ? config.search.path : 'search.xml' %>';
   if (search_path.length == 0) {
