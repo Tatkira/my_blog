@@ -26,7 +26,7 @@ var NO_COPY_MSG = '内容受版权保护，禁止复制；如需转载请联系�
   }
 
   function handleCopyCut(e){
-    if(selectionContainerIsCode()) return; // 代码块允许复制
+    if(selectionContainerIsCode()) return;
     try{
       if(e.clipboardData && e.clipboardData.setData){
         e.clipboardData.setData('text/plain', NO_COPY_MSG);
@@ -39,9 +39,7 @@ var NO_COPY_MSG = '内容受版权保护，禁止复制；如需转载请联系�
         return;
       }
       e.preventDefault();
-    }catch(err){
-      try{ e.preventDefault(); }catch(e2){}
-    }
+    }catch(err){ try{ e.preventDefault(); }catch(e2){} }
   }
 
   document.addEventListener('copy', handleCopyCut);
@@ -55,6 +53,28 @@ var NO_COPY_MSG = '内容受版权保护，禁止复制；如需转载请联系�
     var isCut = (e.ctrlKey || e.metaKey) && (key === 'x' || key === 'X' || code === 88);
     if((isCopy || isCut) && !selectionContainerIsCode()){
       try{ e.preventDefault(); }catch(err){}
+    }
+  });
+
+  // 阻止右键菜单（可通过配置解除）
+  document.addEventListener('contextmenu', function(e){
+    try{ e.preventDefault(); }catch(err){}
+  });
+
+  // 尝试拦截常见打开开发者工具或查看源码的快捷键
+  document.addEventListener('keydown', function(e){
+    // F12, Ctrl+Shift+I/J/C, Ctrl+U
+    var key = e.key || '';
+    var code = e.keyCode || 0;
+    var isF12 = code === 123;
+    var isCtrlShiftI = (e.ctrlKey || e.metaKey) && e.shiftKey && (key === 'I' || key === 'i');
+    var isCtrlShiftJ = (e.ctrlKey || e.metaKey) && e.shiftKey && (key === 'J' || key === 'j');
+    var isCtrlShiftC = (e.ctrlKey || e.metaKey) && e.shiftKey && (key === 'C' || key === 'c');
+    var isCtrlU = (e.ctrlKey || e.metaKey) && (key === 'U' || key === 'u');
+    if(isF12 || isCtrlShiftI || isCtrlShiftJ || isCtrlShiftC || isCtrlU){
+      try{ e.preventDefault(); }catch(err){}
+      try{ e.stopPropagation(); }catch(err){}
+      return false;
     }
   });
 })();
