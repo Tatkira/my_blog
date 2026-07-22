@@ -1,0 +1,64 @@
+.li1-box{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.li1-box-item{
+  overflow: hidden;
+  flex: 0 0 48%;
+  position: relative;
+  min-height: 180px;
+  margin-bottom: 40px;
+}
+.li1-box-item:hover img{
+  transform: scale(1);
+}
+.li1-box-item:hover .boxitem-title{
+  transform: translateY(0);
+  opacity: 1;
+}
+.li1-box-item>img{
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transform: scale(1.05);
+  transition: transform .3s ease-in-out;
+  display: block;
+}
+.li1-box-item .boxitem-title{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: translateY(100%);
+  transition: transform .28s ease-in-out, opacity .28s ease-in-out;
+  text-align: center;
+  background-color: var(--headerhover);
+  color: var(--headerFont);
+  padding: 10px 12px;
+  box-sizing: border-box;
+  font-size: clamp(12px, 1.6vw, 14px);
+  line-height: 1.3;
+  opacity: 0.98;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+}
+.boxitem-title h6{
+  font-size: clamp(14px, 2vw, 16px);
+  margin: 0 0 4px;
+  line-height: 1.1;
+  word-break: break-word;
+}
+
+
+  /* 手机*/
+  @media screen and (max-width: 550px) {
+    .li1-box-item{
+      flex: auto;
+      min-height: auto;
+    }
+  }

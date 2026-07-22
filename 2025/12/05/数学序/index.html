@@ -1,0 +1,349 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>多学数学（带土脸）（序） | DAONE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="现代深度学习的一个奇幻之处，在于即使没有完全理解其底层的数学原理，我们也可以理解和应用它的大部分内容。 这标志着这个领域正在成熟。 正如大多数软件开发者不需要担心可计算函数理论一样，深度学习者也不必担心最大似然学习的理论基础。当然，我们还没完全到达这个阶段。 在实践中，你有时需要理解，架构选择是如何影响梯度流的，或者通过使用特定的损失函数，来实现你所做的隐含假设。 你可能需要知道熵究竟测量的是什">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多学数学（带土脸）（序）">
+<meta property="og:url" content="http://example.com/2025/12/05/%E6%95%B0%E5%AD%A6%E5%BA%8F/index.html">
+<meta property="og:site_name" content="DAONE">
+<meta property="og:description" content="现代深度学习的一个奇幻之处，在于即使没有完全理解其底层的数学原理，我们也可以理解和应用它的大部分内容。 这标志着这个领域正在成熟。 正如大多数软件开发者不需要担心可计算函数理论一样，深度学习者也不必担心最大似然学习的理论基础。当然，我们还没完全到达这个阶段。 在实践中，你有时需要理解，架构选择是如何影响梯度流的，或者通过使用特定的损失函数，来实现你所做的隐含假设。 你可能需要知道熵究竟测量的是什">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/daitu.png">
+<meta property="article:published_time" content="2025-12-05T05:29:00.000Z">
+<meta property="article:modified_time" content="2026-02-09T07:06:15.534Z">
+<meta property="article:author" content="DAONE">
+<meta property="article:tag" content="数学">
+<meta property="article:tag" content="深度学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/daitu.png">
+  
+    <link rel="alternate" href="/atom.xml" title="DAONE" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/fork-awesome/1.2.0/css/fork-awesome.min.css">
+
+  <!-- KaTeX CSS (Required for markdown-it-katex) -->
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header" class="post-header">
+  <div id="banner"></div>
+  <script>
+    // Bing Random Background
+    (function() {
+      var bingUrl = 'https://bing.biturl.top/?resolution=1920&format=image&index=random&mkt=zh-CN';
+      var img = new Image();
+      img.src = bingUrl;
+      
+      img.onload = function() {
+        var header = document.getElementById('header');
+        var banner = document.getElementById('banner');
+        
+        // 创建一个新的 div 用于显示 Bing 壁纸，实现叠加淡入效果
+        var newBanner = document.createElement('div');
+        newBanner.style.position = 'absolute';
+        newBanner.style.top = '0';
+        newBanner.style.left = '0';
+        newBanner.style.width = '100%';
+        newBanner.style.height = '100%';
+        newBanner.style.background = 'url(' + bingUrl + ') center #000';
+        newBanner.style.backgroundAttachment = 'fixed';
+        newBanner.style.backgroundSize = 'cover';
+        newBanner.style.zIndex = '-1'; // 保持在底层
+        newBanner.style.opacity = '0'; // 初始透明
+        newBanner.style.transition = 'opacity 1s ease-in-out'; // 设置过渡动画
+        
+        // 将新 banner 插入到旧 banner 后面（DOM 顺序靠后即显示在上方）
+        if (banner && banner.parentNode) {
+           banner.parentNode.insertBefore(newBanner, banner.nextSibling);
+        }
+        
+        // 触发重绘后改变透明度，启动淡入
+        setTimeout(function() {
+          newBanner.style.opacity = '1';
+        }, 50);
+      };
+    })();
+  </script>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      
+        <h1 id="logo-wrap">
+          <span id="logo">多学数学（带土脸）（序）</span>
+        </h1>
+        <div id="subtitle-wrap" style="margin-top: 10px; color: #fff;">
+          <span><i class="fa fa-calendar"></i> 2025-12-05</span>
+          
+            <span style="margin-left: 15px;">
+              <i class="fa fa-tags"></i>
+              <a class="article-header-tag-none-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a> <a class="article-header-tag-none-link" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a>
+            </span>
+          
+        </div>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/portfolio">Portfolio</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <!-- RSS feed temporarily hidden 没想出这个部件的功能，就先暂时藏起来了 -->
+        <!-- 
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+         -->
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form class="search-form" onsubmit="return false;">
+            <input type="text" id="local-search-input" class="search-form-input" placeholder="Search...">
+            <button type="submit" class="search-form-submit">&#xF002;</button>
+        </form>
+        <div id="local-search-result" class="local-search-result-cls"></div>
+      </div>
+    </div>
+  </div>
+  
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-数学序" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><img src="/images/daitu.png" alt="带土脸"></p>
+<p>现代深度学习的一个奇幻之处，在于即使没有完全理解其底层的数学原理，我们也可以理解和应用它的大部分内容。</p>
+<p>这标志着这个领域正在成熟。</p>
+<p>正如大多数软件开发者不需要担心可计算函数理论一样，深度学习者也不必担心最大似然学习的理论基础。当然，我们还没完全到达这个阶段。</p>
+<p>在实践中，你有时需要理解，架构选择是如何影响梯度流的，或者通过使用特定的损失函数，来实现你所做的隐含假设。</p>
+<p>你可能需要知道熵究竟测量的是什么，以及它如何帮助理解在模型中每个 Bit 意味着什么。这些都需要更深入的数学知识。</p>
+<p>接下来的数学系列文章旨在提供理解现代深度学习核心理论所需的数学背景，不过，这里介绍的内容并不全面。</p>
+<p>我们从更深入地研究线性代数开始。</p>
+<p>然后讨论积分，以便为下一主题 ———————— 概率论打下基础。</p>
+<p>实践中遇到的问题往往是不确定的，因此需要一种语言来讨论不确定的事物。我们回顾随机变量的理论以及最常见到的分布，以便从概率性的角度讨论模型。</p>
+<p>与概率论密切相关的是统计学的研究。然而统计学是一个非常大的领域，本系列文章只介绍基本概念：</p>
+<ul>
+<li>评估和比较估计量</li>
+<li>假设检验</li>
+<li>构建置信区间</li>
+</ul>
+<p>最后，我们讨论信息论。它是关于信息存储和传输的数学研究。这为我们提供了核心语言，可以定量地讨论一个模型在论域上持有多少信息。</p>
+<p>总的来说，这些构成了深入理解深度学习路径所需的数学核心。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <span class="post-views" data-path="2025/12/05/数学序/">
+        <svg class="post-views-icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="16" height="16" aria-hidden="true">
+          <path d="M957.971679 501.685074c-6.928806-9.940396-172.653245-243.818051-441.060321-243.818051-268.409123 0-434.131515 233.877655-441.061344 243.818051-10.730389 15.408945-10.730389 35.877115 0 51.284013 6.928806 9.94142 172.652222 243.819075 441.061344 243.819075 268.407076 0 434.130492-233.877655 441.060321-243.819075C968.701045 537.561166 968.701045 517.092995 957.971679 501.685074zM516.911358 751.877299c-248.028956 0-404.191622-224.550219-404.191622-224.550219s156.161642-224.551242 404.191622-224.551242c248.028956 0 404.190599 224.551242 404.190599 224.551242S764.940314 751.877299 516.911358 751.877299z" fill="#bfbfbf"></path>
+          <path d="M516.911358 347.687724c-99.206466 0-179.641403 80.434937-179.641403 179.64038s80.434937 179.64038 179.641403 179.64038c99.205443 0 179.639357-80.434937 179.639357-179.64038S616.116801 347.687724 516.911358 347.687724zM516.911358 662.057621c-74.2951 0-134.730541-60.435441-134.730541-134.729517s60.435441-134.730541 134.730541-134.730541c74.294077 0 134.728494 60.435441 134.728494 134.730541S591.205435 662.057621 516.911358 662.057621z" fill="#bfbfbf"></path>
+        </svg>
+        <span class="post-views-count">0</span>
+      </span>
+      <a data-url="http://example.com/2025/12/05/%E6%95%B0%E5%AD%A6%E5%BA%8F/" data-id="cmrw3v84t000at0tta19b2moo" data-title="多学数学（带土脸）（序）" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/12/05/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%EF%BC%88%E4%B8%80%EF%BC%89/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">
+        
+          线性代数（数学1）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/12/03/%E5%88%9D%E5%AD%A6%E5%89%8D%E7%AB%AF/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">初识前端</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+<div class="widget-wrap sea-profile">
+  <div class="widget">
+    <div class="sea-profile-avatar">
+      <img src="/images/avatar.jpg" alt="DAONE">
+    </div>
+    <h3 class="sea-profile-name">DAONE</h3>
+    
+    <div class="sea-profile-links">
+      
+    </div>
+  </div>
+</div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/blogs/">blogs</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B0%B5/">氵</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RL/" rel="tag">RL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/isaac-gym/" rel="tag">isaac gym</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/12/06/sigma%E4%B8%8E%E9%80%9F%E5%BA%A6%E6%8C%87%E4%BB%A4%E8%81%94%E7%B3%BB/">Tracking Sigma 与命令范围</a>
+          </li>
+        
+          <li>
+            <a href="/2025/12/05/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%EF%BC%88%E4%B8%80%EF%BC%89/">线性代数（数学1）</a>
+          </li>
+        
+          <li>
+            <a href="/2025/12/05/%E6%95%B0%E5%AD%A6%E5%BA%8F/">多学数学（带土脸）（序）</a>
+          </li>
+        
+          <li>
+            <a href="/2025/12/03/%E5%88%9D%E5%AD%A6%E5%89%8D%E7%AB%AF/">初识前端</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/12/">十二月 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 DAONE<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+      <br>
+      <span>2025 By <b>DAONE</b> </span>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/portfolio" class="mobile-nav-link">Portfolio</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+<script src="/js/nocopy.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+
+<script src="/js/post-views.js"></script>
+
+<script>
+  var search_path = 'search.xml';
+  if (search_path.length == 0) {
+    search_path = 'search.xml';
+  }
+  var path = '/' + search_path;
+  searchFunc(path, 'local-search-input', 'local-search-result');
+</script>
+
+  </div>
+</body>
+</html>
