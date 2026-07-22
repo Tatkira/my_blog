@@ -1,5 +1,7 @@
 # Dependency directories
 node_modules/
+backup/
+my_resume/
 
 # Debug log
 npm-debug.log

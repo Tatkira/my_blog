@@ -1,0 +1,142 @@
+// 2026RC越障 项目展示页 - 学术风白色卡片样式
+$ps-bg = #fff
+$ps-text = #222
+$ps-muted = #555
+$ps-accent = #2563eb
+$ps-border = #e5e7eb
+$ps-radius = 12px
+$max-content = 1200px
+
+*
+  box-sizing: border-box
+
+html, body
+  margin: 0
+  padding: 0
+
+body.project-showcase
+  background: #f8f9fa
+  color: $ps-text
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif
+  font-size: 16px
+  line-height: 1.6
+  min-height: 100vh
+
+.ps-header
+  max-width: $max-content
+  margin: 0 auto
+  padding: 48px 24px 12px
+  text-align: center
+  background: $ps-bg
+  border-bottom: 1px solid $ps-border
+  margin-bottom: 16px
+
+.ps-back
+  display: inline-block
+  color: $ps-muted
+  text-decoration: none
+  font-size: 14px
+  margin-bottom: 16px
+  transition: color 0.2s
+  &:hover
+    color: $ps-accent
+
+.ps-title
+  margin: 0 0 8px
+  font-size: 36px
+  font-weight: 700
+  letter-spacing: 0.02em
+  color: #111
+
+.ps-subtitle
+  margin: 0 auto
+  max-width: 720px
+  color: $ps-muted
+  font-size: 16px
+  line-height: 1.5
+
+.ps-main
+  max-width: $max-content
+  margin: 0 auto
+  padding: 16px 24px 48px
+
+.ps-section
+  max-width: 900px
+  margin: 0 auto 48px
+
+.ps-section-title
+  margin: 0 0 18px
+  font-size: 20px
+  font-weight: 600
+  color: #111
+  padding-bottom: 8px
+  border-bottom: 2px solid $ps-border
+
+.ps-video-grid
+  display: grid
+  gap: 16px
+  justify-content: center
+  &.cols-1
+    grid-template-columns: minmax(240px, 480px)
+  &.cols-2
+    grid-template-columns: repeat(2, minmax(240px, 460px))
+  &.cols-3
+    grid-template-columns: repeat(3, minmax(220px, 320px))
+
+.ps-video-card
+  background: $ps-bg
+  border: 1px solid $ps-border
+  border-radius: 8px
+  overflow: hidden
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04)
+  transition: box-shadow 0.2s, transform 0.2s
+  position: relative
+  width: 100%
+  padding-top: 56.25% // 固定 16:9 比例
+  &:hover
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08)
+    transform: translateY(-2px)
+  video
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    object-fit: cover
+    background: #000
+
+.ps-video-controls
+  padding-top: 56.25%
+  video
+    object-fit: cover
+
+.ps-footer
+  max-width: $max-content
+  margin: 0 auto
+  padding: 24px 24px 40px
+  text-align: center
+  color: $ps-muted
+  font-size: 13px
+  a
+    color: $ps-muted
+    text-decoration: none
+    &:hover
+      color: $ps-accent
+
+@media (max-width: 900px)
+  .ps-video-grid
+    &.cols-2, &.cols-3
+      grid-template-columns: repeat(2, minmax(220px, 1fr))
+
+@media (max-width: 600px)
+  .ps-header
+    padding-top: 32px
+  .ps-title
+    font-size: 28px
+  .ps-subtitle
+    font-size: 14px
+  .ps-section
+    margin-bottom: 32px
+  .ps-video-grid
+    &.cols-1, &.cols-2, &.cols-3
+      grid-template-columns: 1fr

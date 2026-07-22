@@ -161,19 +161,48 @@ title: Portfolio
         </div>
         <div class="borderbotm"></div>
         <div class="buttom-box ">
-          <a class="button" href="mailto:1512290971@qq.com">联系我</a>
+          <a class="button" href="mailto:1512290971@qq.com" onclick="copyEmail(event)">联系我</a>
         </div>
+        <div id="copy-toast" style="visibility: hidden; opacity: 0; position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.75); color: #fff; padding: 8px 18px; border-radius: 20px; font-size: 14px; z-index: 9999; transition: opacity 0.25s, top 0.25s; pointer-events: none;">邮箱已复制</div>
+        <script>
+          function copyEmail(event) {
+            event.preventDefault();
+            navigator.clipboard.writeText('1512290971@qq.com').then(showToast).catch(fallbackCopy);
+          }
+          function fallbackCopy() {
+            var input = document.createElement('input');
+            input.value = '1512290971@qq.com';
+            document.body.appendChild(input);
+            input.select();
+            document.execCommand('copy');
+            document.body.removeChild(input);
+            showToast();
+          }
+          function showToast() {
+            var toast = document.getElementById('copy-toast');
+            toast.style.visibility = 'visible';
+            toast.style.opacity = '1';
+            toast.style.top = '30px';
+            setTimeout(function() {
+              toast.style.opacity = '0';
+              toast.style.top = '20px';
+              setTimeout(function() {
+                toast.style.visibility = 'hidden';
+              }, 250);
+            }, 2000);
+          }
+        </script>
       </div>
     </div>
     <!-- 右边 -->
     <div class="co-right" id="next-one">
       <div class="content-li li1">
         <div class="li1-box">
-          <a class="li1-box-item carbox" href="项目链接">
+          <a class="li1-box-item carbox" href="/portfolio/2026rc/">
             <img src="/images/resume/project/rl.jpg" alt="">
             <div class="boxitem-title">
-              <h6>Locomotion</h6>
-              <span>Learning a general and extensible agile locomoion policy using true value regression module and RL</span>
+              <h6>2026RC越障</h6>
+              <span>自制轮足复杂地形 RL 越障与 Sim2Real · ROBOCON 仿生足式障碍赛视频材料</span>
             </div>
           </a>
           <a class="li1-box-item carbox" target="_blank" rel="noopener" href="https://gitee.com/wttAndroid/vuechat">

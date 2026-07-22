@@ -389,7 +389,6 @@ img {
   width: 28ch; 
   white-space: nowrap;
   overflow: hidden;
-  animation: typing 3s steps(28,end), blink-caret .3s step-end infinite alternate;
 }
 
 
