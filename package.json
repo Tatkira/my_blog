@@ -18,6 +18,7 @@
   "dependencies": {
     "@iktakahiro/markdown-it-katex": "^4.0.1",
     "hexo": "^7.0.0",
+    "hexo-deployer-git": "^4.0.0",
     "hexo-generator-archive": "^2.0.0",
     "hexo-generator-category": "^2.0.0",
     "hexo-generator-index": "^3.0.0",
@@ -29,13 +30,12 @@
     "hexo-server": "^3.0.0",
     "hexo-theme-landscape": "^1.0.0",
     "markdown-it-html5-embed": "^1.0.0"
-  }
-  ,
+  },
   "devDependencies": {
+    "clean-css": "^5.3.2",
     "fs-extra": "^11.1.1",
     "glob": "^8.1.0",
     "html-minifier-terser": "^7.0.0",
-    "javascript-obfuscator": "^4.1.0",
-    "clean-css": "^5.3.2"
+    "javascript-obfuscator": "^4.1.0"
   }
 }
