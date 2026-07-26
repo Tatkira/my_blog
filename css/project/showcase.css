@@ -109,6 +109,12 @@ body.project-showcase {
 .ps-video-controls video {
   object-fit: cover;
 }
+.ps-note {
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.5;
+}
 .ps-footer {
   max-width: 1200px;
   margin: 0 auto;
